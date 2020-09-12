@@ -33,7 +33,7 @@ def create_user():
 
     # Insertion operations
     cur.execute('INSERT INTO %s (user_id, email, username, password, first_name, last_name, phone, age, \
-         gender, location, timezone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (user_id, email, username, password, first_name, last_name, phone, age, gender, location, timezone))
+         gender, location, timezone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (user, user_id, email, username, password, first_name, last_name, phone, age, gender, location, timezone))
     conn.commit()
     cur.close()
 
