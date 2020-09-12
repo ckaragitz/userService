@@ -22,8 +22,8 @@ def create_user():
     email = data.get("email")
     username = data.get("username")
     password = data.get("password")
-    first_name = data.get("first")
-    last_name = data.get("last")
+    first_name = data.get("first_name")
+    last_name = data.get("last_name")
     phone = data.get("phone")
     age = data.get("age")
     gender = data.get("gender")
@@ -36,7 +36,7 @@ def create_user():
     # Need to handle for registration questions/preferences #
 
     # Insertion operations
-    cur.execute('INSERT INTO user (user_id, email, username, password, first_name, last_name, phone, age, \
+    cur.execute('INSERT INTO "user" (user_id, email, username, password, first_name, last_name, phone, age, \
          gender, location, timezone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (user_id, email, username, password, first_name, last_name, phone, age, gender, location, timezone))
     conn.commit()
     cur.close()
