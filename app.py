@@ -29,11 +29,15 @@ def create_user():
     gender = data.get("gender")
     location = data.get("location")
     timezone = data.get("timezone")
+
+    print('\n')
+    print(data)
+    print(email)
     # Need to handle for registration questions/preferences #
 
     # Insertion operations
-    cur.execute('INSERT INTO %s (user_id, email, username, password, first_name, last_name, phone, age, \
-         gender, location, timezone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (user, user_id, email, username, password, first_name, last_name, phone, age, gender, location, timezone))
+    cur.execute('INSERT INTO user (user_id, email, username, password, first_name, last_name, phone, age, \
+         gender, location, timezone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (user_id, email, username, password, first_name, last_name, phone, age, gender, location, timezone))
     conn.commit()
     cur.close()
 
