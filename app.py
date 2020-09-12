@@ -6,7 +6,7 @@ import psycopg2
 
 app = Flask(__name__)
 
-@app.route('/api/user/create')
+@app.route('/api/user/create', methods=['POST'])
 def create_user():
    
     DATABASE_URL = os.environ['DATABASE_URL']
@@ -37,7 +37,5 @@ def create_user():
     conn.commit()
     cur.close()
 
-
-@app.route('/api/user/delete')
-def delete_user():
-   pass
+if __name__ == '__main__':
+    app.run(debug=True)
