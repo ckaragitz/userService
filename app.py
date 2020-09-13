@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, make_response
 import os
+import json
 import random 
 import string 
 import psycopg2
@@ -40,6 +41,8 @@ def create_user():
          gender, location, timezone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (user_id, email, username, password, first_name, last_name, phone, age, gender, location, timezone))
     conn.commit()
     cur.close()
+
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 if __name__ == '__main__':
     app.run(debug=True)
