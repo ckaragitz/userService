@@ -58,7 +58,7 @@ def delete_user(user_id):
 
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
-@app.route('/api/user/<user_id>', methods=['POST'])
+@app.route('/api/user/<user_id>', methods=['GET'])
 def search_user(user_id):
    
     DATABASE_URL = os.environ['DATABASE_URL']
