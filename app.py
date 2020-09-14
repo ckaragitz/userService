@@ -68,10 +68,10 @@ def delete_user(user_id):
     # Deletion operations
     cur.execute("""SELECT user_id, email, username, password, first_name, last_name, phone, age, \
          gender, location, timezone FROM "user" WHERE "user_id" = '%s';""" % (user_id))
-    conn.commit()
+    rows = cur.fetchall()
     cur.close()
 
-    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+    return jsonify(rows)
 
 if __name__ == '__main__':
     app.run(debug=True)
