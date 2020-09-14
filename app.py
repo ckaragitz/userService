@@ -59,7 +59,7 @@ def delete_user(user_id):
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 @app.route('/api/user/<user_id>', methods=['POST'])
-def delete_user(user_id):
+def search_user(user_id):
    
     DATABASE_URL = os.environ['DATABASE_URL']
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
