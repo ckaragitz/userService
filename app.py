@@ -44,5 +44,19 @@ def create_user():
 
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
+@app.route('/api/user/delete/<user_id>', methods=['POST'])
+def delete_user(user_id):
+   
+    DATABASE_URL = os.environ['DATABASE_URL']
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cur = conn.cursor()
+
+    # Deletion operations
+    cur.execute("""DELETE FROM "user" WHERE "user_id" = '%s';""" % (user_id))
+    conn.commit()
+    cur.close()
+
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
 if __name__ == '__main__':
     app.run(debug=True)
