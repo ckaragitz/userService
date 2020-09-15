@@ -31,9 +31,6 @@ def create_user():
     location = data.get("location")
     timezone = data.get("timezone")
 
-    print('\n')
-    print(data)
-    print(email)
     # Need to handle for registration questions/preferences #
 
     # Insertion operations
@@ -65,7 +62,7 @@ def search_user(user_id):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cur = conn.cursor()
 
-    # Deletion operations
+    # Search operations
     cur.execute("""SELECT user_id, email, username, password, first_name, last_name, phone, age, \
          gender, location, timezone FROM "user" WHERE "user_id" = '%s';""" % (user_id))
     rows = cur.fetchall()
