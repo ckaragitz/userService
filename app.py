@@ -70,5 +70,19 @@ def search_user(user_id):
 
     return jsonify(rows)
 
+@app.route('/api/users', methods=['GET'])
+def search_all():
+   
+    DATABASE_URL = os.environ['DATABASE_URL']
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cur = conn.cursor()
+
+    # Search operations
+    cur.execute("""SELECT * FROM "user";""")
+    rows = cur.fetchall()
+    cur.close()
+
+    return jsonify(rows)
+
 if __name__ == '__main__':
     app.run(debug=True)
